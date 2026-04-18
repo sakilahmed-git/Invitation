@@ -1,38 +1,500 @@
-.App {
+/* RESET */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  background: black;
+  color: white;
+  font-family: "Playfair Display", serif;
+  touch-action: none;
+}
+
+/* APP */
+
+.app {
+  position: fixed;
+  inset: 0;
+}
+
+/* DARK OVERLAY */
+
+.app::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9));
+}
+
+/* SCENE */
+
+.scene {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1200px;
+  position: relative;
+}
+
+/* TYPOGRAPHY */
+
+.title {
+  font-size: 32px;
+  letter-spacing: 4px;
+  color: #f5d27a;
+}
+
+.names {
+  font-size: 40px;
+  font-weight: 600;
+  color: #f5d27a;
+text-shadow:
+    0 0 8px rgba(255,215,0,0.8),
+    0 0 16px rgba(255,215,0,0.6),
+    0 0 30px rgba(255,215,0,0.5),
+    0 0 60px rgba(255,215,0,0.3);
+    letter-spacing: 2px;
+  z-index: 2;
+}
+
+.subtitle {
+  opacity: 0.6;
+}
+
+.hindi {
+  font-family: "Noto Sans Devanagari", sans-serif;
+}
+
+.center {
+  text-align: center;
+  padding: 20px;
+}
+
+/* CARDS */
+
+.card {
+  border: 1px solid rgba(255,215,0,0.25);
+  padding: 12px;
+  margin: 12px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.highlight {
+  background: rgba(255,215,0,0.15);
+}
+
+/* INVITE */
+
+.invite {
+  font-size: 18px;
+  max-width: 80%;
+  line-height: 1.6;
+}
+
+.small {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+/* COUPLE SECTION */
+
+.photo-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+/* REMOVE OLD CUTOUT CONFLICT */
+
+/* Groom */
+/* Container stays same */
+
+/* FLEXIBLE CONTROL SYSTEM */
+/* GROOM */
+.groom {
+  position: absolute;
+  bottom: -80px;
+  left: -9%;
+  zoom: 1.4;
+
+  transform: translateX(-50%) scale(1.1);
+
+  width: 250px;
+  z-index: 3;
+}
+
+/* BRIDE */
+.bride {
+  position: absolute;
+  bottom: -28%;
+  left: 70%;
+  zoom: 1.7;
+  left: 35%;
+
+  transform: translateX(-50%) scale(1);
+
+  width: 240px;
+  z-index: 3;
+}
+
+.names-big {
+  position: absolute;
+  bottom: 12%;
+  width: 100%;
+  text-align: center;
+  font-size: 26px;
+  color: gold;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-shadow: 0 0 15px rgba(255,215,0,0.5);
+}
+
+/* CENTER GLOW */
+
+.center-glow {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(255,215,0,0.6), transparent);
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(100px);
+  z-index: 1;
+}
+
+/* TAGLINE */
+
+.tagline {
+  position: absolute;
+  bottom: 18%;
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  color: #f5d27a;
+}
+
+/* GANESH */
+
+.ganesh {
+  width: 90px;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 20px gold);
+}
+
+/* SWIPE HINT */
+
+.swipe-hint {
+  position: absolute;
+  bottom: 40px;
+  font-size: 13px;
+  opacity: 0.6;
+  letter-spacing: 2px;
+}
+
+/* PETALS (IMPROVED REAL LOOK) */
+
+.petal {
+  position: absolute;
+  width: 10px;
+  height: 14px;
+  background: radial-gradient(circle at 30% 30%, #ff9aa2, #ff4d6d);
+  border-radius: 50% 50% 50% 0;
+  top: -20px;
+  animation: fall linear infinite;
+  opacity: 0.9;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+  }
+}
+
+/* GOLD PARTICLE GRID */
+
+.scene::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,215,0,0.06) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: move 25s linear infinite;
+  z-index: -1;
+}
+
+@keyframes move {
+  from { transform: translate(0,0); }
+  to { transform: translate(-200px,-200px); }
+}
+
+/* MANDAP BACKGROUND */
+
+.mandap-bg {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.groom::after,
+.bride::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  width: 100%;
+  height: 30px;
+  background: radial-gradient(ellipse, rgba(0,0,0,0.6), transparent);
+  z-index: -1;
+}
+
+.fire {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  width: 180px;
+  height: 160px;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, #ff7b00, #ff2e00, transparent);
+  filter: blur(25px);
+  z-index: 2;
+}
+@keyframes fireFlicker {
+  from { opacity: 0.5; transform: scale(1); }
+  to { opacity: 0.9; transform: scale(1.1); }
+}
+/* ================= INVITE PAGE FIX ================= */
+
+.invite-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(20, 0, 0, 0.6);
+}
+
+.mandap {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  opacity: 0.6;
+  z-index: 3;
+}
+
+/* NEW BLENDED PEOPLE (DO NOT TOUCH OLD .groom/.bride) */
+.person {
+  position: absolute;
+  bottom: 0;
+  width: 240px;
+
+  /* FIXED */
+  mix-blend-mode: normal;
+  filter: brightness(0.95) contrast(1.05) saturate(1.1);
+
+  opacity: 0.95;
+  z-index: 2;
+
+  -webkit-mask-image: linear-gradient(to top, transparent 0%, black 40%);
+  mask-image: linear-gradient(to top, transparent 0%, black 40%);
+}
+
+.groom-blend {
+  left: 115%;
+  transform: translateX(-120%);
+  top: 35%;
+  zoom: 1.3; 
+}
+
+.bride-blend {
+  left: -33%;
+  transform: translateX(20%);
+  zoom: 1.8;
+  top: 30%;
+}
+
+/* TEXT */
+.content {
+  position: absolute;
+  top: 15%;
+  width: 100%;
+  text-align: center;
+  color: #f5d28c;
+  
+}
+
+.content h1 { font-size: 38px; margin-bottom: -8px;}
+.content h2 { font-size: 22px; margin-bottom: 10px; }
+.content h3 { font-size: 32px; margin-top: 20px; }
+.content h4 { font-size: 20px; margin-bottom: 35px; margin-top: -20px; }
+
+.content p {
+  max-width: 600px;
+  margin: 10px auto;
+  font-size: 14px;
+}
+
+.center-info {
+  position: absolute;
+  bottom: 18%;
+  width: 100%;
+  text-align: center;
+  color: gold;
+}
+
+.center-info h1 {
+  font-size: 28px;
+  letter-spacing: 2px;
+  text-shadow: 0 0 15px rgba(255,215,0,0.6);
+}
+
+.center-info .sub {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.details {
+  position: absolute;
+  bottom: 55%;
+  width: 36%;
+  color: #f5d27a;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.groom-details {
+  left: 5%;
+  text-align: left;
+}
+
+.bride-details {
+  right: 5%;
+  top: 35%;
+  text-align: right;
+}
+
+.center-info{
+  top: 17%;
+}
+
+.heart{
+  font-size: 25px;
+}
+
+/* ===== NAMES SCENE UPGRADE ===== */
+
+.names-scene {
+  position: relative;
+}
+
+/* Glow */
+.name-glow {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 300px;
+  height: 200px;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(172, 146, 0, 0.5), transparent);
+  filter: blur(70px);
+  z-index: -1;
+}
+
+/* WEDS styling */
+.heart {
+  margin: 1px 0;
+  font-size: 20px;
+  letter-spacing: 3px;
+  color: #f5d27a;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* IMPORTANT */
+.names-scene {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* THIS centers vertically */
+  align-items: center;
+
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* GOLDEN ASH */
+.ash {
+  position: absolute;
+  bottom: 0px;
+  width: 5px;
+  height: 5px;
+  background: radial-gradient(circle, gold, rgba(255,140,0,0.6));
+  border-radius: 50%;
+  opacity: 0.4;
+
+  animation: ashRise linear infinite;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@keyframes ashRise {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-110vh) translateX(20px);
+    opacity: 0;
   }
 }
+/* BACKGROUND COUPLE */
+.bg-couple {
+  position: absolute;
+  inset: 0;
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 100%;
+  height: 70%;
+  top: 31%;
+
+  object-fit: cover;
+
+  z-index: 0;
+
+  opacity: 0.35;          /* increase visibility */
+  filter: brightness(1) blur(2px);
 }
-
-.App-link {
-  color: #61dafb;
+/* Keep text above */
+.names,
+.heart {
+  position: relative;
+  z-index: 2;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.names-scene::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, transparent 40%, rgba(0,0,0,0.6));
+  z-index: 1;
 }
