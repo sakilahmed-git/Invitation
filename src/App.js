@@ -151,9 +151,6 @@ const Names = () => (
     {/* TOP NAME (from above) */}
   <motion.h1
     className="names"
-    initial={{ y: "-100vh", opacity: 0 }}
-    animate={{ y: 0, opacity: 1 }}
-    transition={{ duration: 1, ease: "easeOut" }}
   >
     GAUTAM KUMAR
   </motion.h1>
@@ -161,9 +158,6 @@ const Names = () => (
   {/* WEDS */}
   <motion.div
     className="heart"
-    initial={{ scale: 0, opacity: 0 }}
-    animate={{ scale: 1, opacity: 1 }}
-    transition={{ delay: 0.8, type: "spring", stiffness: 120 }}
   >
     WEDS
   </motion.div>
@@ -171,9 +165,6 @@ const Names = () => (
   {/* BOTTOM NAME (from below) */}
   <motion.h1
     className="names"
-    initial={{ y: "100vh", opacity: 0 }}
-    animate={{ y: 0, opacity: 1 }}
-    transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
   >
     SIMPI KUMARI
   </motion.h1>
