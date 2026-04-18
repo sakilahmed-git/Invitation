@@ -33,6 +33,9 @@ html, body {
   width: 100%;
   height: 100%;
   display: flex;
+  aspect-ratio: 9 / 16;
+  max-width: 420px;
+  margin: auto;
   justify-content: center;
   align-items: center;
   perspective: 1200px;
@@ -117,32 +120,28 @@ text-shadow:
 
 /* FLEXIBLE CONTROL SYSTEM */
 /* GROOM */
-.groom {
-  position: absolute;
-  bottom: -80px;
-  left: -9%;
-  zoom: 1.4;
-
-  transform: translateX(-50%) scale(1.1);
-
-  width: 250px;
-  z-index: 3;
-}
-
-/* BRIDE */
+.groom,
 .bride {
   position: absolute;
-  bottom: -28%;
-  left: 70%;
-  zoom: 1.7;
-  left: 35%;
+  bottom: 0;
 
-  transform: translateX(-50%) scale(1);
+  width: 145vw;        /* 👈 main size control */
+  max-width: 320px;   /* 👈 stops too big on large screens */
 
-  width: 240px;
+  transform: translateX(-50%);
   z-index: 3;
 }
+/* positions */
+.groom {
+  left: -7%;
+  top: 30%;
+}
 
+.bride {
+  left: 40%;
+  top: 45%;
+  scale: 1.5;
+}
 .names-big {
   position: absolute;
   bottom: 12%;
@@ -314,18 +313,30 @@ text-shadow:
   mask-image: linear-gradient(to top, transparent 0%, black 40%);
 }
 
-.groom-blend {
-  left: 115%;
-  transform: translateX(-120%);
-  top: 35%;
-  zoom: 1.3; 
+/* SHARED */
+.groom-blend,
+.bride-blend {
+  position: absolute;
+
+  width: clamp(160px, 28vw, 260px);  /* responsive size */
+  max-width: 280px;
+
+  transform: translateX(-50%);
+  z-index: 2;
 }
 
+/* GROOM */
+.groom-blend {
+  left: 75%;     /* was 115% → unstable */
+  top: 47%;
+  scale: 1.6;
+}
+
+/* BRIDE */
 .bride-blend {
-  left: -33%;
-  transform: translateX(20%);
-  zoom: 1.8;
-  top: 30%;
+  left: 59%;     /* was -33% → unstable */
+  top: 53%;
+  scale: 1.9;
 }
 
 /* TEXT */
@@ -338,15 +349,31 @@ text-shadow:
   
 }
 
-.content h1 { font-size: 38px; margin-bottom: -8px;}
-.content h2 { font-size: 22px; margin-bottom: 10px; }
-.content h3 { font-size: 32px; margin-top: 20px; }
-.content h4 { font-size: 20px; margin-bottom: 35px; margin-top: -20px; }
+.content h1 {
+  font-size: clamp(26px, 5vw, 38px);
+  margin-bottom: -8px;
+}
+
+.content h2 {
+  font-size: clamp(16px, 3vw, 22px);
+  margin-bottom: 10px;
+}
+
+.content h3 {
+  font-size: clamp(22px, 4vw, 32px);
+  margin-top: 20px;
+}
+
+.content h4 {
+  font-size: clamp(14px, 2.8vw, 20px);
+  margin-bottom: 35px;
+  margin-top: -20px;
+}
 
 .content p {
-  max-width: 600px;
+  max-width: 90%;                 /* was 600px → now flexible */
   margin: 10px auto;
-  font-size: 14px;
+  font-size: clamp(12px, 2.5vw, 14px);
 }
 
 .center-info {
@@ -377,6 +404,10 @@ text-shadow:
   line-height: 1.5;
 }
 
+.details h3{
+  white-space: nowrap;
+}
+
 .groom-details {
   left: 5%;
   text-align: left;
@@ -398,9 +429,6 @@ text-shadow:
 
 /* ===== NAMES SCENE UPGRADE ===== */
 
-.names-scene {
-  position: relative;
-}
 
 /* Glow */
 .name-glow {
@@ -433,8 +461,10 @@ text-shadow:
 .names-scene {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100%;
+  max-width: 420px;   /* keeps same look */
 
+  margin:auto;
   display: flex;
   flex-direction: column;
   justify-content: center;   /* THIS centers vertically */
